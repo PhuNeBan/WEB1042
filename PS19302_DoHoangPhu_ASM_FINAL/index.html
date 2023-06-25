@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/thongtin.js"></script>
+    <link rel="stylesheet" href="css/sanpham.css">
+    <link rel="stylesheet" href="css/dongho.css">
+    <!-- Hiệu ứng ảnh -->
+    <script>
+        /*Hiệu ứng ảnh*/
+        var index = 1;
+        changeImages = function () {
+            var imgs = ["img/hinh1.jpg", "img/hinh2.jpg", "img/hinh3.jpg"];
+            document.getElementById('img').src = imgs[index];
+            index++;
+            if (index == 3) {
+                index = 0;
+            }
+        }
+        setInterval(changeImages, 2000);
+
+        // Danh mục sản phẩm
+        var bookCategoryList = [
+            "Tranh Đông Hồ",
+            "Tranh Thêu Tay Cao Cấp",
+            "Tranh Phong Cảnh",
+            "Tranh Phòng Làm Việc",
+            "Tranh Phòng Khách"];
+    </script>
+</head>
+
+<body onload="loadSanPham()">
+
+    <!-- Hiển thị đồng hồ ra màn hình -->
+    <div id="time">
+        <span id="clock-time"></span>
+        <i id="clock-sun" class="fa fa-sun-o" aria-hidden="true"></i>
+        <i id="clock-moon" class="fa fa-moon-o" aria-hidden="true"></i>
+    </div>
+    <script>
+        function dongHo() {
+            var today = new Date();
+            var gio = today.getHours();
+            var phut = today.getMinutes();
+            var giay = today.getSeconds();
+
+            if (gio < 10) {
+                gio = "0" + gio;
+            }
+            if (phut < 10) {
+                phut = "0" + phut;
+            }
+            if (giay < 10) {
+                giay = "0" + giay;
+            }
+            document.getElementById("clock-time").innerHTML = gio + ":" + phut + ":" + giay;
+            setTimeout("dongHo()", 1000);
+
+            if (gio >= 6 && gio < 18) {
+                document.getElementById("clock-sun").style.display = "inline-block";
+                document.getElementById("clock-moon").style.display = "none";
+            } else {
+                document.getElementById("clock-sun").style.display = "none";
+                document.getElementById("clock-moon").style.display = "inline-block";
+            }
+        }
+        dongHo();
+    </script>
+
+    <!-- Tạo Menu -->
+    <div class="container">
+        <header>
+            <img id="img" onclick="changeImages()" src="img/hinh1.jpg" alt="">
+        </header>
+        <nav>
+            <div class="menu">
+                <li><a style="text-decoration: none" href="index.html">Trang chủ</a></li>
+                <li><a style="text-decoration: none" href="cart.html">Vỏ Hàng</a></li>
+                <li><a style="text-decoration: none" href="dovui.html">Đố Vui</a></li>
+                <li><a style="text-decoration: none" href="from.html">Hóa Đơn</a></li>
+            </div>
+        </nav>
+        <main>
+            <!-- Tạo hình ảnh -->
+            <div class="img">
+                <img src="img/hinh4.jpg" alt="" width="300" height="200">
+                <img src="img/hinh5.jpg" alt="" width="300" height="200">
+            </div>
+            <!-- Danh mục sản phẩm -->
+            <h1 style="padding-left: 50px;">Danh Mục Sản Phẩm</h1>
+            <div style="font-size: 20px;font-weight: bold;padding-left: 50px;" id="categoryList"></div>
+            </br>
+            </br>
+            <article>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Trang Chủ</li>
+                    </ol>
+                </nav>
+                <h4>Cửa Hàng Tranh Nghệ Thuật</h4>
+                <div class="container1" id="SanPham">
+                    <div class="khung_Bao_Mot_San_Pham">
+                        <img src="img/hinh6.jpg" alt="" class="">
+                        <h4 class="ten_San_Pham">Tranh Phong Cảnh</h4>
+                        <h4 class="gia_San_Pham">Giá: 1.500.000đ</h4>
+                        <button class="button_Them_San_Pham_Vao_Gio" type="button" onclick="themVaoGio()">Liên
+                            Hệ Ngay</button>
+                    </div>
+                    <div class="khung_Bao_Mot_San_Pham">
+                        <img src="img/hinh7.jpg" alt="" class="">
+                        <h4 class="ten_San_Pham">Tranh Phong Cảnh</h4>
+                        <h4 class="gia_San_Pham">Giá: 1.500.000đ</h4>
+                        <button class="button_Them_San_Pham_Vao_Gio" type="button" onclick="themVaoGio()">Liên Hệ
+                            Ngay</button>
+                    </div>
+                    <div class="khung_Bao_Mot_San_Pham">
+                        <img src="img/hinh8.jpg" alt="" class=""></br>
+                        <h4 class="ten_San_Pham">Tranh Phong Cảnh</h4>
+                        <h4 class="gia_San_Pham">Giá: 1.500.000đ</h4>
+                        <button class="button_Them_San_Pham_Vao_Gio" type="button" onclick="themVaoGio()">Liên Hệ
+                            Ngay</button>
+                    </div>
+                </div>
+
+                <script src="js/sanpham.js"></script>
+                <script>
+                    // tạo class có chứa các thuộc tính
+                    class sanPham {
+                        constructor(ten_SP, dia_Chi_Anh, gia_SP) {
+                            this.ten_SP = ten_SP;
+                            this.dia_Chi_Anh = dia_Chi_Anh;
+                            this.gia_SP = gia_SP;
+                        }
+                        getTen_SP() {
+                            return this.ten_SP;
+                        }
+                        getDia_Chi_Anh() {
+                            return this.dia_Chi_Anh;
+                        }
+                        getGia_SP() {
+                            return this.gia_SP;
+                        }
+                    }
+
+                    function tao_Khung_Chua_Mot_San_PHam(sanPham) { //Tạo Khung chứa một sản phẩm
+
+                        let main = document.getElementById("SanPham");
+
+                        let button_Them_San_Pham_Vao_Gio = document.createElement("Button");
+                        button_Them_San_Pham_Vao_Gio.className = "button_Them_San_Pham_Vao_Gio";
+                        button_Them_San_Pham_Vao_Gio.nodeType = "button";
+                        // button_Them_San_Pham_Vao_Gio.id = sanPham.getName();
+                        // button_Them_San_Pham_Vao_Gio.setAttribute("onclick","themVaoGio()"); Thêm sự kiện vào button
+                        button_Them_San_Pham_Vao_Gio.appendChild(document.createTextNode("Liên Hệ Ngay"));
+
+                        let img = document.createElement("img");
+                        img.src = sanPham.getDia_Chi_Anh();
+
+                        let ten_San_Pham = document.createElement("div");
+                        ten_San_Pham.className = "ten_San_Pham";
+                        ten_San_Pham.appendChild(document.createTextNode(sanPham.getTen_SP()));
+
+                        let gia_San_Pham = document.createElement("div");
+                        gia_San_Pham.className = "gia_San_Pham";
+                        gia_San_Pham.appendChild(document.createTextNode("Giá: " + sanPham.getGia_SP()));
+
+                        let khung_Bao_Mot_San_Pham = document.createElement("div");
+                        khung_Bao_Mot_San_Pham.className = "khung_Bao_Mot_San_Pham";
+                        khung_Bao_Mot_San_Pham.appendChild(img);
+                        khung_Bao_Mot_San_Pham.appendChild(ten_San_Pham);
+                        khung_Bao_Mot_San_Pham.appendChild(gia_San_Pham);
+                        khung_Bao_Mot_San_Pham.appendChild(button_Them_San_Pham_Vao_Gio);
+
+                        main.appendChild(khung_Bao_Mot_San_Pham);
+                    }
+
+                    function loadSanPham() {
+                        for (let i = 0; i < sp.length; i++) {
+                            let spsp = new sanPham(sp[i].ten_SP, sp[i].dia_Chi_Anh, sp[i].gia_SP);
+                            // console.log(spsp.getDia_Chi_Anh())
+                            tao_Khung_Chua_Mot_San_PHam(spsp);
+                        }
+                    }
+                </script>
+            </article>
+        </main>
+        <footer>
+            </br>
+            <p>Thiết kế bởi <em id="Phú"></em></br>&COPY;2021</p>
+        </footer>
+
+        <!-- Hiển thị danh mục -->
+        <script>
+            //for..in
+            //for..in
+            var v;
+            for (v of bookCategoryList) {
+
+                var category = document.getElementById("categoryList");
+                //Tạo một node hoặc là tạo một phần tử HTML
+                var a = document.createElement("a");
+
+                //Thêm một node
+                category.appendChild(a);
+                //Tạo một node văn bản
+                var text = document.createTextNode(v);
+
+                a.appendChild(text);
+                //Thiết lập một thuộc tính và gán giá trị cho nó
+                // a.setAttribute("href", v + "#");
+                a.setAttribute("style", "display:block");
+                a.style.textDecoration = "none";
+                a.style.color = "black"
+            }
+
+            var hoTen = "Hoàng Phú";
+            var maSV = "PS19302";
+            var ngaySinh = "01/01/2000";
+            document.getElementById("Phú").innerHTML = hoTen;
+        </script>
+    </div>
+</body>
+
+</html>

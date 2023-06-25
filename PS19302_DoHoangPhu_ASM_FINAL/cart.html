@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/thongtin.js"></script>
+    <link rel="stylesheet" href="css/cart.css">
+    <script src="js/cart.js"></script>
+    <link rel="stylesheet" href="css/dongho.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+    <!-- Hiệu ứng ảnh -->
+    <script>
+        /*Hiệu ứng ảnh*/
+        var index = 1;
+        changeImages = function () {
+            var imgs = ["img/hinh1.jpg", "img/hinh2.jpg", "img/hinh3.jpg"];
+            document.getElementById('img').src = imgs[index];
+            index++;
+            if (index == 3) {
+                index = 0;
+            }
+        }
+        setInterval(changeImages, 2000);
+
+        // Danh mục sản phẩm
+        var bookCategoryList = [
+            "Tranh Đông Hồ",
+            "Tranh Thêu Tay Cao Cấp",
+            "Tranh Phong Cảnh",
+            "Tranh Phòng Làm Việc",
+            "Tranh Phòng Khách"];
+    </script>
+</head>
+
+<body>
+    <!-- Hiển thị đồng hồ ra màn hình -->
+    <div id="time">
+        <span id="clock-time"></span>
+        <i id="clock-sun" class="fa fa-sun-o" aria-hidden="true"></i>
+        <i id="clock-moon" class="fa fa-moon-o" aria-hidden="true"></i>
+    </div>
+    <script>
+        function dongHo() {
+            var today = new Date();
+            var gio = today.getHours();
+            var phut = today.getMinutes();
+            var giay = today.getSeconds();
+
+            if (gio < 10) {
+                gio = "0" + gio;
+            }
+            if (phut < 10) {
+                phut = "0" + phut;
+            }
+            if (giay < 10) {
+                giay = "0" + giay;
+            }
+            document.getElementById("clock-time").innerHTML = gio + ":" + phut + ":" + giay;
+            setTimeout("dongHo()", 1000);
+
+            if (gio >= 6 && gio < 18) {
+                document.getElementById("clock-sun").style.display = "inline-block";
+                document.getElementById("clock-moon").style.display = "none";
+            } else {
+                document.getElementById("clock-sun").style.display = "none";
+                document.getElementById("clock-moon").style.display = "inline-block";
+            }
+        }
+        dongHo();
+    </script>
+
+    <!-- Tạo Menu -->
+    <div class="container">
+        <header>
+            <img id="img" onclick="changeImages()" src="img/hinh1.jpg" alt="">
+        </header>
+        <nav>
+            <div class="menu">
+                <li><a style="text-decoration: none" href="index.html">Trang chủ</a></li>
+                <li><a style="text-decoration: none" href="cart.html">Vỏ Hàng</a></li>
+                <li><a style="text-decoration: none" href="dovui.html">Đố Vui</a></li>
+                <li><a style="text-decoration: none" href="from.html">Hóa Đơn</a></li>
+            </div>
+        </nav>
+        <main>
+            <article>
+                <div class="boxcenter">
+                    <table>
+                        <caption style="color: red;font-weight: bold;font-size: 30px;">Các Bức Bán Chạy Nhất</caption>
+                        </br>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="all"></th>
+                                <th>Cửa Hàng Tranh</th>
+                                <th>Giá</th>
+                                <th>Hình ảnh</th>
+                                <th>Số Lượng</th>
+                                <th>Mua</th>
+                            </tr>
+                        </thead>
+                        <tbody id="giohang">
+                            <tr>
+                                <td><input type="checkbox" checked onchange="daott(this)" class="pick"></td>
+                                <td>Tranh Phong Cảnh</td>
+                                <td class="giatien">1500000</td>
+                                <td><img src="img/hinh3.jpg" alt="" width="150" height="100"></td>
+                                <td><input class="soluong" type="number" min="1" max="20" value="1"></td>
+                                <td><button onclick="them(this)" id="select">Chọn</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" checked onchange="daott(this)" class="pick"></td>
+                                <td>Tranh Phong Cảnh</td>
+                                <td class="giatien">1500000</td>
+                                <td><img src="img/hinh4.jpg" alt="" width="150" height="100"></td>
+                                <td><input class="soluong" type="number" min="1" max="20" value="1"></td>
+                                <td><button onclick="them(this)" id="select">Chọn</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" checked onchange="daott(this)" class="pick"></td>
+                                <td>Tranh Phong Cảnh</td>
+                                <td class="giatien">15000000</td>
+                                <td><img src="img/hinh5.jpg" alt="" width="150" height="100"></td>
+                                <td><input class="soluong" type="number" min="1" max="20" value="1"></td>
+                                <td><button onclick="them(this)" id="select">Chọn</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" checked onchange="daott(this)" class="pick"></td>
+                                <td>Tranh Phong Cảnh</td>
+                                <td class="giatien">1500000</td>
+                                <td><img src="img/hinh6.jpg" alt="" width="150" height="100"></td>
+                                <td><input class="soluong" type="number" min="1" max="20" value="1"></td>
+                                <td><button onclick="them(this)" id="select">Chọn</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" checked onchange="daott(this)" class="pick"></td>
+                                <td>Tranh Phong Cảnh</td>
+                                <td class="giatien">1500000</td>
+                                <td><img src="img/hinh7.jpg" alt="" width="150" height="100"></td>
+                                <td><input class="soluong" type="number" min="1" max="20" value="1"></td>
+                                <td><button onclick="them(this)" id="select">Chọn</button></td>
+                            </tr>
+                        </tbody>
+                        <table id="cart">
+                            </br>
+                            <caption style="color: red;">Tổng tiền: <span id="total">0</span></caption>
+                            <caption>Giỏ hàng của bạn</caption>
+                        </table>
+                    </table>
+                    <hr style="margin: 20px 0; ">
+                </div>
+            </article>
+        </main>
+        <footer>
+            </br>
+            <p>Thiết kế bởi <em id="Phú"></em></br>&COPY;2021</p>
+        </footer>
+        <script>
+            var hoTen = "Hoàng Phú";
+            var maSV = "PS19302";
+            var ngaySinh = "01/01/2000";
+            document.getElementById("Phú").innerHTML = hoTen;
+        </script>
+    </div>
+</body>
+
+</html>

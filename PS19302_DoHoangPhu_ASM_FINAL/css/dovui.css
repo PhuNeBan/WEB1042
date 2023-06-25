@@ -1,0 +1,77 @@
+.PT1{
+    padding: 30px 0;
+}
+.main{
+    text-align: center;
+    margin: 0 auto;
+    width: 460px;
+    height: 600px;
+    background: black;
+    color: white;
+    border-radius: 8px;
+}
+.main h1{
+    padding: 10px;
+    text-align: center;
+}
+.main hr{
+   margin-top: 15px;
+}
+#slg{
+    font-style: italic;
+    color: yellow;
+}
+form{
+    margin: 15px;
+}
+.GiaiPT{
+    margin: 20px;
+}
+.GiaiPT input{
+    border: 1px solid black;
+    height: 25px;
+    margin: 10px;
+    line-height: 25px;
+    text-align: center;
+    background-color:white;
+}
+.button button{
+    font-size: 17px;
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    margin: 10px 30px;
+    border: none;
+}
+.button button:hover{
+    background-color: aqua;
+}
+#cho{
+    background-color: white;
+    font-weight: bold;
+}
+#giai-pt{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+.kq{
+    margin-top: 15px;
+    height: 140px;
+    width: 100%;
+}
+.vien{
+    border-radius: 8px;
+    width: 320px;
+    height: 100%;
+    border: 1px solid white;
+    margin: 0 auto;
+}
+.vien p{
+    margin-top: 40px;
+}
+.time{
+    font-size: 17px;
+    margin-top: 30px;
+    color: yellow;
+}

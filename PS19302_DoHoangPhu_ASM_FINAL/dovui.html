@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/thongtin.js"></script>
+    <script src="js/dovui.js"></script>
+    <link rel="stylesheet" href="css/dovui.css">
+    <script src="js/dongHo.js"></script>
+    <link rel="stylesheet" href="css/dongho.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Hiệu ứng ảnh -->
+    <script>
+        /*Hiệu ứng ảnh*/
+        var index = 1;
+        changeImages = function () {
+            var imgs = ["img/hinh1.jpg", "img/hinh2.jpg", "img/hinh3.jpg"];
+            document.getElementById('img').src = imgs[index];
+            index++;
+            if (index == 3) {
+                index = 0;
+            }
+        }
+        setInterval(changeImages, 2000);
+
+        // Danh mục sản phẩm
+        var bookCategoryList = [
+            "Tranh Đông Hồ",
+            "Tranh Thêu Tay Cao Cấp",
+            "Tranh Phong Cảnh",
+            "Tranh Phòng Làm Việc",
+            "Tranh Phòng Khách"];
+    </script>
+</head>
+
+<body>
+    <!-- Hiển thị đồng hồ ra màn hình -->
+    <div id="time">
+        <span id="clock-time"></span>
+        <i id="clock-sun" class="fa fa-sun-o" aria-hidden="true"></i>
+        <i id="clock-moon" class="fa fa-moon-o" aria-hidden="true"></i>
+    </div>
+    <script>
+        function dongHo() {
+            var today = new Date();
+            var gio = today.getHours();
+            var phut = today.getMinutes();
+            var giay = today.getSeconds();
+
+            if (gio < 10) {
+                gio = "0" + gio;
+            }
+            if (phut < 10) {
+                phut = "0" + phut;
+            }
+            if (giay < 10) {
+                giay = "0" + giay;
+            }
+            document.getElementById("clock-time").innerHTML = gio + ":" + phut + ":" + giay;
+            setTimeout("dongHo()", 1000);
+
+            if (gio >= 6 && gio < 18) {
+                document.getElementById("clock-sun").style.display = "inline-block";
+                document.getElementById("clock-moon").style.display = "none";
+            } else {
+                document.getElementById("clock-sun").style.display = "none";
+                document.getElementById("clock-moon").style.display = "inline-block";
+            }
+        }
+        dongHo();
+    </script>
+
+    <!-- Tạo Menu -->
+    <div class="container">
+        <header>
+            <img id="img" onclick="changeImages()" src="img/hinh1.jpg" alt="">
+        </header>
+        <nav>
+            <div class="menu">
+                <li><a style="text-decoration: none" href="index.html">Trang chủ</a></li>
+                <li><a style="text-decoration: none" href="cart.html">Vỏ Hàng</a></li>
+                <li><a style="text-decoration: none" href="dovui.html">Đố Vui</a></li>
+                <li><a style="text-decoration: none" href="from.html">Hóa Đơn</a></li>
+            </div>
+        </nav>
+        <main>
+            <article>
+                <!-- Giải Phương Trình Bậc 2 -->
+                <div class="GiaiPT">
+                    <div class="main">
+                        <h2>Giải Phương Trình <span id="a">a</span>x<sup>2</sup> + <span id="b">b</span>x + <span
+                                id="c">c</span> = 0</h2>
+                        <p>Số lần giải: <span id="slg">0</span></p>
+                        <hr>
+                        <form action="" name="form">
+                            <div class="GiaiPT">
+                                <label for="">Nhập số a</label>
+                                <input type="text" id="hsa" name="hsa">
+                            </div>
+                            <div class="GiaiPT">
+                                <label for="">Nhập số b</label>
+                                <input type="text" id="hsb" name="hsb">
+                            </div>
+                            <div class="GiaiPT">
+                                <label for="">Nhập số c</label>
+                                <input type="text" id="hsc" name="hsc">
+                            </div>
+                        </form>
+                        <div class="button">
+                            <button id="giai-pt" disabled type="button" onclick="tinh()">Giải PT</button>
+                            <button id="cho" type="button" onclick="random()">Cho Số</button>
+                        </div>
+                        <div class="kq">
+                            <div class="vien">
+                                <p id="result"></p>
+                            </div>
+                        </div>
+                    </div>
+            </article>
+        </main>
+        <footer>
+            </br>
+            <p>Thiết kế bởi <em id="Phú"></em></br>&COPY;2021</p>
+        </footer>
+
+        <!-- Hiển thị danh mục -->
+        <script>
+            var hoTen = "Hoàng Phú";
+            var maSV = "PS19302";
+            var ngaySinh = "01/01/2000";
+            document.getElementById("Phú").innerHTML = hoTen;
+        </script>
+    </div>
+</body>
+
+</html>

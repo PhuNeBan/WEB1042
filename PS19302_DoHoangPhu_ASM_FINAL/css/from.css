@@ -1,0 +1,45 @@
+.form{
+    width: 70%;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 30px;
+    height: 900px;
+
+}
+.info{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+.form-group{
+    font-size: large;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+textarea{
+    max-width: 200%;
+    max-height: 100px;
+    min-width: 100%;
+    min-height: 100px;
+}
+button{
+    font-size: 20px;
+    width: 200px;
+    height: 60px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+label{
+    font-size: larger;
+}
+input[type=text]{
+    font-size: 20px;
+    width: 100%;
+    height: 30px;
+}
+em{
+    color: red;
+}
